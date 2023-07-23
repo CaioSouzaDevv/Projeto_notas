@@ -22,20 +22,21 @@
                 <img src="imagens/logo.png" class="logo" alt="logo" title="Logo">
                 <div class="d-flex ">
                     <ul>
-                    <li><a title="Notas Principais" href="index.html">Home</a></li>
-                <li><a title="Notas Principais" href="notas-principais.html">Notas Principais</a>
-                <ul class="sub-menu">
-                    <li><a title="Notas Principais" href="jogo.html">Jogo</a>
+                        <li><a title="Notas Principais" href="index.html">Home</a></li>
+                        <li><a title="Notas Principais" href="notas-principais.html">Notas Principais</a>
+                            <ul class="sub-menu">
+                                <li><a title="Notas Principais" href="jogo.html">Jogo</a>
 
-                    </li></ul>
-                </li>
-                <li><a title="Notas Com Pestana" href="notas-com-pestana">Notas com Pestana</a></li>
-                <li><a title="Sobre a Música" href="sobre-a-musica">Sobre a música</a></li>
-            </ul>
-            </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li><a title="Notas Com Pestana" href="notas-com-pestana">Notas com Pestana</a></li>
+                        <li><a title="Sobre a Música" href="sobre-a-musica">Sobre a música</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
-    
+
     </header>
     <main>
         <h2 class="text-center">Jogo</h2>
@@ -67,7 +68,7 @@
 
                         <input type="radio" id="si" class="ml-5" name="acertividade" value="si.jpg">
                         <label for="si">Si Maior</label>
-                        
+
                         <!-- Adicione os demais inputs de acordo com as notas -->
                     </div>
                     <button class="btn w-25 m-auto" onclick="gerarImagemAleatoria()">Gere outra nota</button>
@@ -113,7 +114,7 @@
             document.getElementById('imagem').src = urlImagemAleatoria;
         }
 
-        function verificarAcertividade()  {
+        function verificarAcertividade() {
             // Obtém o valor do input radio selecionado pelo usuário
             const respostaSelecionada = document.querySelector('input[name="acertividade"]:checked').value;
 
