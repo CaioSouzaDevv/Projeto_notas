@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-base.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;600;800&display=swap');
+    </style>
+
+    <script src="script/script.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="wrapper">
+            <div id="menu" class="d-flex justify-content-between align-items-center">
+                <img src="imagens/logo.png" class="logo" alt="logo" title="Logo">
+                <div class="d-flex ">
+                    <ul>
+                    <li><a title="Notas Principais" href="index.html">Home</a></li>
+                <li><a title="Notas Principais" href="notas-principais.html">Notas Principais</a>
+                <ul class="sub-menu">
+                    <li><a title="Notas Principais" href="jogo.html">Jogo</a>
+
+                    </li></ul>
+                </li>
+                <li><a title="Notas Com Pestana" href="notas-com-pestana">Notas com Pestana</a></li>
+                <li><a title="Sobre a Música" href="sobre-a-musica">Sobre a música</a></li>
+            </ul>
+            </div>
+            </div>
+        </div>
+    
+    </header>
+    <main>
+        <h2 class="text-center">Jogo</h2>
+        <div class="container">
+            <div class="wrapper">
+                <div class="jogo__principais d-flex flex-column">
+                    <div class="card">
+                        <img id="imagem" src="" class="picture-center" alt="Imagem Aleatória">
+                    </div>
+                    <h2 class="text-center">Qual nota é?</h2>
+                    <div class="acertividade d-inline-flex justify-content-center">
+                        <input type="radio" id="do" class="ml-5" name="acertividade" value="do.jpg">
+                        <label for="do">Dó Maior</label>
+
+                        <input type="radio" id="re" class="ml-5" name="acertividade" value="re.jpg">
+                        <label for="re">Ré Maior</label>
+
+                        <input type="radio" id="mi" class="ml-5" name="acertividade" value="mi.jpg">
+                        <label for="mi">Mi Maior</label>
+
+                        <input type="radio" id="fa" class="ml-5" name="acertividade" value="fa.jpg">
+                        <label for="fa">Fá Maior</label>
+
+                        <input type="radio" id="sol" class="ml-5" name="acertividade" value="sol.jpg">
+                        <label for="sol">Sol Maior</label>
+
+                        <input type="radio" id="la" class="ml-5" name="acertividade" value="la.jpg">
+                        <label for="la">Lá Maior</label>
+
+                        <input type="radio" id="si" class="ml-5" name="acertividade" value="si.jpg">
+                        <label for="si">Si Maior</label>
+                        
+                        <!-- Adicione os demais inputs de acordo com as notas -->
+                    </div>
+                    <button class="btn w-25 m-auto" onclick="gerarImagemAleatoria()">Gere outra nota</button>
+                    <button class="btn w-25 m-auto" onclick="verificarAcertividade()">Verificar</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Desenvolvido por CaioSouzaDevv</p>
+    </footer>
+
+    <script>
+        // Lista de nomes das imagens disponíveis na pasta "imagens/jogos"
+        const notasAleatorias = [
+            'do.jpg',
+            're.jpg',
+            'mi.jpg',
+            'fa.jpg',
+            'sol.jpg',
+            'la.jpg',
+            'si.jpg'
+            // Adicione mais nomes de imagens, se necessário
+        ];
+
+        function obterImagemAleatoria() {
+            // Gera um índice aleatório baseado na quantidade de imagens disponíveis
+            const indiceAleatorio = Math.floor(Math.random() * notasAleatorias.length);
+
+            // Retorna o nome da imagem aleatória
+            return notasAleatorias[indiceAleatorio];
+        }
+
+        function gerarImagemAleatoria() {
+            // Obtem o nome da imagem aleatória
+            const nomeImagemAleatoria = obterImagemAleatoria();
+
+            // Cria a URL completa para a imagem aleatória
+            const urlImagemAleatoria = 'imagens/jogos/' + nomeImagemAleatoria;
+
+            // Define a imagem aleatória na tag <img>
+            document.getElementById('imagem').src = urlImagemAleatoria;
+        }
+
+        function verificarAcertividade()  {
+            // Obtém o valor do input radio selecionado pelo usuário
+            const respostaSelecionada = document.querySelector('input[name="acertividade"]:checked').value;
+
+            // Obtém apenas o nome do arquivo da imagem aleatória (sem o diretório)
+            const nomeImagemAleatoria = obterNomeArquivoDaURL(document.getElementById('imagem').src);
+
+            // Verifica se o valor do input radio selecionado é igual ao nome da imagem aleatória
+            if (respostaSelecionada === nomeImagemAleatoria) {
+                alert('Parabéns! Sua resposta está correta!');
+            } else {
+                alert('Ops! Sua resposta está incorreta! Tente novamente!');
+            }
+
+            // Limpa o input radio após a verificação
+            document.querySelector('input[name="acertividade"]:checked').checked = false;
+
+            // Gera uma nova imagem aleatória
+            gerarImagemAleatoria();
+        }
+
+        function obterNomeArquivoDaURL(url) {
+            // Obtém apenas o nome do arquivo da URL, removendo o diretório
+            const partes = url.split('/');
+            return partes[partes.length - 1];
+        }
+
+        // Gera uma imagem aleatória ao carregar a página
+        gerarImagemAleatoria();
+    </script>
+
+
+    <footer>
+        <p>
+            Desenvolvido por CaioSouzaDevv</p>
+
+    </footer>
+</body>
+
+</html>
